@@ -14,16 +14,21 @@ Celery and Redis, and building the REST APIs and dashboards that sit on top of c
 - **Infra:** Docker, Docker Compose, GitHub Actions CI/CD
 - **AI / voice:** LLM API integration, telephony and voice-agent webhooks
 
-### Projects
+### Featured project: CallFlow
+
+A multi-tenant SaaS for AI voice-agent call analytics
+([live demo](https://vedansh-0611.github.io/callflow-dashboard/)).
 
 - **[callflow-analytics-api](https://github.com/Vedansh-0611/callflow-analytics-api)**:
-  Django + DRF service that ingests HMAC-signed call webhooks idempotently, computes per-call
-  LLM and telephony cost in a Celery worker, and serves call analytics. PostgreSQL, Redis,
-  Docker Compose, pytest, CI.
-- **[callflow-dashboard](https://github.com/Vedansh-0611/callflow-dashboard)**
-  ([live demo](https://vedansh-0611.github.io/callflow-dashboard/)):
-  React dashboard for that API with KPI cards, charts, a filterable calls table and a
-  per-call event timeline. Deployed on GitHub Pages.
+  Django + DRF + Celery backend. Organizations with roles, JWT login and hashed org API keys,
+  idempotent HMAC-signed webhook ingestion, async cost and outcome summaries, plan-based rate
+  limits (Redis) and monthly usage limits (402), and outbound `call.summarized` webhooks with
+  signed, retried delivery. OpenAPI docs, JSON logs with request ids, a multi-stage Docker
+  image, a Render blueprint, and CI that tests on PostgreSQL and runs the full stack end to end.
+- **[callflow-dashboard](https://github.com/Vedansh-0611/callflow-dashboard)**:
+  React app for it: sign-in, org switcher, analytics with charts and call timelines, API key
+  and webhook management, and a usage and plan page. The GitHub Pages demo runs on a mock of
+  the API.
 
 ### Contact
 
